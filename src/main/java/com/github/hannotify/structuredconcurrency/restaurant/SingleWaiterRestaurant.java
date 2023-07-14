@@ -5,13 +5,11 @@ import com.github.hannotify.structuredconcurrency.staff.Waiter;
 public record SingleWaiterRestaurant(Waiter waiter) implements Restaurant {
 
     @Override
-    public MultiCourseMeal announceMenu() {
-        waiter.introduce();
-
-        Course entree = waiter.announceCourse(CourseType.ENTREE);
+    public MultiCourseMeal announceMenu() throws OutOfStockException {
+        Course starter = waiter.announceCourse(CourseType.STARTER);
         Course main = waiter.announceCourse(CourseType.MAIN);
         Course dessert = waiter.announceCourse(CourseType.DESSERT);
 
-        return new MultiCourseMeal(entree, main, dessert);
+        return new MultiCourseMeal(starter, main, dessert);
     }
 }
