@@ -1,24 +1,26 @@
 package com.github.hannotify.structuredconcurrency.staff;
 
-import com.github.hannotify.structuredconcurrency.restaurant.Course;
-import com.github.hannotify.structuredconcurrency.restaurant.CourseType;
-import com.github.hannotify.structuredconcurrency.restaurant.Ingredient;
+import com.github.hannotify.structuredconcurrency.restaurant.kitchen.Course;
+import com.github.hannotify.structuredconcurrency.restaurant.kitchen.CourseType;
+import com.github.hannotify.structuredconcurrency.restaurant.kitchen.Ingredient;
+import com.github.hannotify.structuredconcurrency.restaurant.kitchen.OutOfStockException;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import static com.github.hannotify.structuredconcurrency.restaurant.CourseType.DESSERT;
-import static com.github.hannotify.structuredconcurrency.restaurant.CourseType.STARTER;
-import static com.github.hannotify.structuredconcurrency.restaurant.CourseType.MAIN;
-import static com.github.hannotify.structuredconcurrency.restaurant.FoodGroup.*;
+import static com.github.hannotify.structuredconcurrency.restaurant.kitchen.CourseType.DESSERT;
+import static com.github.hannotify.structuredconcurrency.restaurant.kitchen.CourseType.STARTER;
+import static com.github.hannotify.structuredconcurrency.restaurant.kitchen.CourseType.MAIN;
+import static com.github.hannotify.structuredconcurrency.restaurant.kitchen.FoodGroup.*;
 
 public class Chef {
-    private static Map<CourseType, List<Course>> menu = Map.of(
+    private static final Map<CourseType, List<Course>> MENU = Map.of(
             STARTER, List.of(
-                new Course("Tomato soup", List.of(
+                new Course("Creamy tomato soup", List.of(
                         new Ingredient("Tomato", VEGETABLES),
-                        new Ingredient("Garlic", VEGETABLES))),
+                        new Ingredient("Garlic", VEGETABLES),
+                        new Ingredient("Cream", DAIRY))),
                 new Course("Carpaccio", List.of(
                         new Ingredient("Raw beef", MEAT),
                         new Ingredient("Parmigiano-Reggiano cheese", DAIRY)))),
@@ -45,8 +47,12 @@ public class Chef {
                         new Ingredient("Flour", GRAINS),
                         new Ingredient("Sugar", CONFECTIONERY)))));
 
-    public static Course pickCourse(CourseType courseType) {
-        var courses = menu.get(courseType);
-        return courses.get(new Random().nextInt(courses.size()));
+    public static Course pickCourse(CourseType courseType) throws OutOfStockException {
+        var courses = MENU.get(courseType);
+
+        Course pickedCourse = courses.get(new Random().nextInt(courses.size()));
+        pickedCourse.checkStock();
+
+        return pickedCourse;
     }
 }

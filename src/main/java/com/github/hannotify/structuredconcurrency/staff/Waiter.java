@@ -2,12 +2,11 @@ package com.github.hannotify.structuredconcurrency.staff;
 
 import com.github.hannotify.structuredconcurrency.bar.Drink;
 import com.github.hannotify.structuredconcurrency.bar.DrinkCategory;
-import com.github.hannotify.structuredconcurrency.restaurant.Course;
-import com.github.hannotify.structuredconcurrency.restaurant.CourseType;
-import com.github.hannotify.structuredconcurrency.restaurant.OutOfStockException;
+import com.github.hannotify.structuredconcurrency.restaurant.kitchen.Course;
+import com.github.hannotify.structuredconcurrency.restaurant.kitchen.CourseType;
+import com.github.hannotify.structuredconcurrency.restaurant.kitchen.OutOfStockException;
 
 import java.util.List;
-import java.util.Objects;
 
 public final class Waiter {
     private final String name;

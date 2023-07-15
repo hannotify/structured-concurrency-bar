@@ -1,14 +1,20 @@
 package com.github.hannotify.structuredconcurrency.restaurant;
 
+import com.github.hannotify.structuredconcurrency.restaurant.kitchen.Course;
+import com.github.hannotify.structuredconcurrency.restaurant.kitchen.CourseType;
+import com.github.hannotify.structuredconcurrency.restaurant.kitchen.MultiCourseMeal;
+import com.github.hannotify.structuredconcurrency.restaurant.kitchen.OutOfStockException;
 import com.github.hannotify.structuredconcurrency.staff.Waiter;
 
-public record SingleWaiterRestaurant(Waiter waiter) implements Restaurant {
+public record SingleWaiterRestaurant() implements Restaurant {
 
     @Override
     public MultiCourseMeal announceMenu() throws OutOfStockException {
-        Course starter = waiter.announceCourse(CourseType.STARTER);
-        Course main = waiter.announceCourse(CourseType.MAIN);
-        Course dessert = waiter.announceCourse(CourseType.DESSERT);
+        Waiter elmo = new Waiter("Elmo");
+
+        Course starter = elmo.announceCourse(CourseType.STARTER);
+        Course main = elmo.announceCourse(CourseType.MAIN);
+        Course dessert = elmo.announceCourse(CourseType.DESSERT);
 
         return new MultiCourseMeal(starter, main, dessert);
     }

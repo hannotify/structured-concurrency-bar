@@ -1,4 +1,4 @@
-package com.github.hannotify.structuredconcurrency.restaurant;
+package com.github.hannotify.structuredconcurrency.restaurant.kitchen;
 
 import java.util.List;
 
