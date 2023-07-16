@@ -11,9 +11,8 @@
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_STRING" value="--enable-preview" />
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="structured-concurrency-bar" options="--enable-preview" />
+      <module name="structured-concurrency-bar" options="" />
     </option>
   </component>
 </project>
