@@ -3,7 +3,6 @@ package com.github.hannotify.structuredconcurrency.restaurant;
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.Course;
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.CourseType;
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.MultiCourseMeal;
-import com.github.hannotify.structuredconcurrency.restaurant.kitchen.OutOfStockException;
 import com.github.hannotify.structuredconcurrency.staff.Waiter;
 
 import java.util.concurrent.ExecutionException;
@@ -12,7 +11,7 @@ import java.util.function.Supplier;
 
 public class StructuredConcurrencyRestaurant implements Restaurant {
     @Override
-    public MultiCourseMeal announceMenu() throws ExecutionException, InterruptedException, OutOfStockException {
+    public MultiCourseMeal announceMenu() throws ExecutionException, InterruptedException {
         Waiter grover = new Waiter("Grover");
         Waiter zoe = new Waiter("Zoe");
         Waiter rosita = new Waiter("Rosita");

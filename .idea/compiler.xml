@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="structured-concurrency-bar" options="" />
+      <module name="structured-concurrency-bar" options="--enable-preview" />
     </option>
   </component>
 </project>

@@ -24,4 +24,9 @@ public record Drink(String name, DrinkCategory drinkCategory) {
     public boolean containsAlcohol() {
         return drinkCategory.containsAlcohol();
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
