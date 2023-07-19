@@ -2,10 +2,8 @@ package com.github.hannotify.structuredconcurrency.bar;
 
 import com.github.hannotify.structuredconcurrency.staff.Waiter;
 
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.StructuredTaskScope;
-import java.util.function.Supplier;
 
 import static com.github.hannotify.structuredconcurrency.bar.DrinkCategory.*;
 
