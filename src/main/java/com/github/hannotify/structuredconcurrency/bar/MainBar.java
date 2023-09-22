@@ -5,10 +5,10 @@ import java.util.concurrent.ExecutionException;
 
 public class MainBar {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        Bar structuredConcurrencyBar = new StructuredConcurrencyBar();
+        Bar bar = new MultiWaiterBar();
 
         Guest hanno = new Guest("Hanno", List.of(
-                //new Drink("Espresso", DrinkCategory.COFFEE),
+                new Drink("Espresso", DrinkCategory.COFFEE),
                 new Drink("Westmalle Dubbel", DrinkCategory.BEER)
         ));
 
@@ -17,7 +17,7 @@ public class MainBar {
                 new Drink("Green tea", DrinkCategory.TEA)
         ));
 
-        structuredConcurrencyBar.determineDrinkOrder(hanno);
-//        structuredConcurrencyBar.determineDrinkOrder(rianne);
+        bar.determineDrinkOrder(hanno);
+        bar.determineDrinkOrder(rianne);
     }
 }

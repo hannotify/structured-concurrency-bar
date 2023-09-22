@@ -6,8 +6,7 @@ import com.github.hannotify.structuredconcurrency.restaurant.kitchen.MultiCourse
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.OutOfStockException;
 import com.github.hannotify.structuredconcurrency.staff.Waiter;
 
-public record SingleWaiterRestaurant() implements Restaurant {
-
+public class SingleWaiterRestaurant implements Restaurant {
     @Override
     public MultiCourseMeal announceMenu() throws OutOfStockException {
         Waiter elmo = new Waiter("Elmo");
