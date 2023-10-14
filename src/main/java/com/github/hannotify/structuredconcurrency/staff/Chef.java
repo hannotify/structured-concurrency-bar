@@ -1,5 +1,6 @@
 package com.github.hannotify.structuredconcurrency.staff;
 
+import com.github.hannotify.structuredconcurrency.restaurant.announcement.AnnouncementId;
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.Course;
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.CourseType;
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.Ingredient;
@@ -47,8 +48,11 @@ public class Chef {
                         new Ingredient("Flour", GRAINS),
                         new Ingredient("Sugar", CONFECTIONERY)))));
 
-    public static Course pickCourse(CourseType courseType) throws OutOfStockException {
+    public static Course pickCourse(String waiterName, CourseType courseType) throws OutOfStockException {
         var courses = MENU.get(courseType);
+
+        System.out.format("[Chef] %s asked me to pick a %s, so that announcement #%d can take place.%n",
+                waiterName, courseType.name().toLowerCase(), AnnouncementId.get());
 
         Course pickedCourse = courses.get(new Random().nextInt(courses.size()));
         pickedCourse.checkStock();

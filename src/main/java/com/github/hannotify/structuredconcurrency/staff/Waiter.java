@@ -6,6 +6,7 @@ import com.github.hannotify.structuredconcurrency.bar.DrinkOrder;
 import com.github.hannotify.structuredconcurrency.bar.DrinksMenu;
 import com.github.hannotify.structuredconcurrency.bar.Guest;
 import com.github.hannotify.structuredconcurrency.bar.GuestDoesntLikeAnyOfTheseDrinksException;
+import com.github.hannotify.structuredconcurrency.restaurant.announcement.AnnouncementId;
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.Course;
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.CourseType;
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.OutOfStockException;
@@ -53,15 +54,23 @@ public final class Waiter {
     }
 
     private void introduce(String guestName) {
-        System.out.format("Hello%s, my name is %s. I'll wait your table today.%n", " " + guestName, name);
+        System.out.format("Hello%s, my name is %s. I'll wait your table today.%n", guestName.isEmpty() ? "" : " " + guestName, name);
         introduced = true;
     }
 
     public Course announceCourse(CourseType courseType) throws OutOfStockException {
         if (!introduced) introduce();
 
-        Course pickedCourse = Chef.pickCourse(courseType);
-        System.out.format("[%s] Today's %s will be '%s'.%n", name, courseType.name().toLowerCase(), pickedCourse);
+        Course pickedCourse = Chef.pickCourse(name, courseType);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.format("[%s] Announcement #%d: Today's %s will be '%s'.%n", name, AnnouncementId.get(),
+                courseType.name().toLowerCase(), pickedCourse);
         return pickedCourse;
     }
 
