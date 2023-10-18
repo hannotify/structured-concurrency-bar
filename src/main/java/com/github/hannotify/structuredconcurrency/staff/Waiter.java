@@ -61,10 +61,12 @@ public final class Waiter {
     public Course announceCourse(CourseType courseType) throws OutOfStockException {
         if (!introduced) introduce();
 
-        Course pickedCourse = Chef.pickCourse(name, courseType);
+        Course pickedCourse;
 
         try {
-            Thread.sleep(1000);
+            System.out.format("\t[%s] Talking to the Chef to determine today's %s course.%n", name, courseType.name().toLowerCase());
+            pickedCourse = Chef.pickCourse(name, courseType);
+            Thread.sleep(200);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

@@ -21,10 +21,10 @@ public class StructuredConcurrencyRestaurant implements Restaurant {
             Supplier<Course> main = scope.fork(() -> zoe.announceCourse(CourseType.MAIN));
             Supplier<Course> dessert = scope.fork(() -> rosita.announceCourse(CourseType.DESSERT));
 
-            scope.join(); // 1
-            scope.throwIfFailed(); // 2
+            scope.join();
+            scope.throwIfFailed();
 
-            return new MultiCourseMeal(starter.get(), main.get(), dessert.get()); // 3
+            return new MultiCourseMeal(starter.get(), main.get(), dessert.get());
         }
     }
 }

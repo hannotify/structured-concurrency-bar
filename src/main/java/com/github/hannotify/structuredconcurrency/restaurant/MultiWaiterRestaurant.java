@@ -16,7 +16,7 @@ public class MultiWaiterRestaurant implements Restaurant {
         Waiter zoe = new Waiter("Zoe");
         Waiter rosita = new Waiter("Rosita");
 
-        try (var executor = Executors.newFixedThreadPool(3)) {
+        try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
             Future<Course> starter = executor.submit(() -> grover.announceCourse(CourseType.STARTER));
             Future<Course> main = executor.submit(() -> zoe.announceCourse(CourseType.MAIN));
             Future<Course> dessert = executor.submit(() -> rosita.announceCourse(CourseType.DESSERT));

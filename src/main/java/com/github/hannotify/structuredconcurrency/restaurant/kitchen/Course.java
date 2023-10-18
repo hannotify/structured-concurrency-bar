@@ -15,7 +15,7 @@ public record Course(String name, List<Ingredient> foodItems) {
                 .findAny();
 
         if (outOfStockIngredient.isPresent()) {
-            throw new OutOfStockException("Sorry, we are completely out of '%s'! This means we cannot serve '%s' today."
+            throw new OutOfStockException("[Stock] Sorry, we are completely out of '%s'! This means we cannot serve '%s' today."
                     .formatted(outOfStockIngredient.get(), name));
         }
     }

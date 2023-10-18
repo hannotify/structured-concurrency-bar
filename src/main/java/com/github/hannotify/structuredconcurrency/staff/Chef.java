@@ -51,12 +51,12 @@ public class Chef {
     public static Course pickCourse(String waiterName, CourseType courseType) throws OutOfStockException {
         var courses = MENU.get(courseType);
 
-        System.out.format("[Chef] %s asked me to pick a %s, so that announcement #%d can take place.%n",
-                waiterName, courseType.name().toLowerCase(), AnnouncementId.get());
-
         Course pickedCourse = courses.get(new Random().nextInt(courses.size()));
-        pickedCourse.checkStock();
 
+        System.out.format("\t[Chef] %s asked me to pick a %s, so that announcement #%d can take place. So I picked '%s'!%n",
+                waiterName, courseType.name().toLowerCase(), AnnouncementId.get(), pickedCourse);
+
+        pickedCourse.checkStock();
         return pickedCourse;
     }
 }
