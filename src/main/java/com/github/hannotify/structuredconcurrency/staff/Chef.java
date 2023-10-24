@@ -54,7 +54,7 @@ public class Chef {
         Course pickedCourse = courses.get(new Random().nextInt(courses.size()));
 
         System.out.format("\t[Chef] %s asked me to pick a %s, so that announcement #%d can take place. So I picked '%s'!%n",
-                waiterName, courseType.name().toLowerCase(), AnnouncementId.threadLocal().get(), pickedCourse);
+                waiterName, courseType.name().toLowerCase(), AnnouncementId.scopedValue().get(), pickedCourse);
 
         pickedCourse.checkStock();
         return pickedCourse;
