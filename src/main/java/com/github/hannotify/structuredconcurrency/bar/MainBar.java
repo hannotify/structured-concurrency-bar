@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class MainBar {
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
-        Bar bar = new MultiWaiterBar();
+    public static void main(String[] args) throws Exception {
+        Bar bar = new MultiWaiterInvokeAnyBar();
 
         Guest hanno = new Guest("Hanno", List.of(
                 new Drink("Espresso", DrinkCategory.COFFEE),

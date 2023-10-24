@@ -23,7 +23,7 @@ public class ThreadsMultiWaiterRestaurant implements Restaurant {
         public void run() {
             try {
                 announcedCourse = waiter.announceCourse(courseType);
-            } catch (OutOfStockException e) {
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }

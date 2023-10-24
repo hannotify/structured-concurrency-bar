@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 
 import static com.github.hannotify.structuredconcurrency.bar.DrinkCategory.*;
 
-public class MultiWaiterBar implements Bar {
+public class MultiWaiterInvokeAnyBar implements Bar {
     @Override
     public DrinkOrder determineDrinkOrder(Guest guest) throws InterruptedException, ExecutionException {
         Waiter zoe = new Waiter("Zoe");
