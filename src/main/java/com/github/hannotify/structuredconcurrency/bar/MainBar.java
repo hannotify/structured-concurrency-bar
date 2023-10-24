@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutionException;
 
 public class MainBar {
     public static void main(String[] args) throws Exception {
-        Bar bar = new MultiWaiterInvokeAnyBar();
+        Bar bar = new StructuredConcurrencyBar();
 
         Guest hanno = new Guest("Hanno", List.of(
                 new Drink("Espresso", DrinkCategory.COFFEE),
