@@ -5,8 +5,8 @@ import com.github.hannotify.structuredconcurrency.restaurant.kitchen.OutOfStockE
 import java.util.concurrent.ExecutionException;
 
 public class MainRestaurant {
-    public static void main(String[] args) throws ExecutionException, InterruptedException, OutOfStockException {
-        Restaurant restaurant = new StructuredConcurrencyRestaurant();
+    public static void main(String[] args) throws Exception {
+        Restaurant restaurant = new SingleWaiterRestaurant();
         restaurant.announceMenu();
     }
 }

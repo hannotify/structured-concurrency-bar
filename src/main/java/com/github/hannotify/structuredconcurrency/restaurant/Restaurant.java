@@ -6,5 +6,5 @@ import com.github.hannotify.structuredconcurrency.restaurant.kitchen.OutOfStockE
 import java.util.concurrent.ExecutionException;
 
 public interface Restaurant {
-    MultiCourseMeal announceMenu() throws ExecutionException, InterruptedException, OutOfStockException;
+    MultiCourseMeal announceMenu() throws Exception;
 }
