@@ -20,6 +20,12 @@ public final class Waiter {
         this.introduced = false;
     }
 
+    public Course announceCourse(CourseType courseType) throws Exception {
+        if (!introduced) introduce();
+
+        return announce(courseType);
+    }
+
     public DrinkOrder getDrinkOrder(final Guest guest, DrinkCategory... drinkCategories) throws GuestDoesntLikeAnyOfTheseDrinksException, InterruptedException {
         if (!introduced) introduce(guest.name());
 
@@ -58,12 +64,6 @@ public final class Waiter {
         introduced = true;
     }
 
-    public Course announceCourse(CourseType courseType) throws Exception {
-        if (!introduced) introduce();
-
-        return announce(courseType);
-    }
-
     private Course announce(CourseType courseType) throws OutOfStockException {
         Course pickedCourse;
 
@@ -78,9 +78,5 @@ public final class Waiter {
         System.out.format("[%s] Announcement #%d: Today's %s will be '%s'.%n", name, AnnouncementId.threadLocal().get(),
                 courseType.name().toLowerCase(), pickedCourse);
         return pickedCourse;
-    }
-
-    public String name() {
-        return name;
     }
 }
