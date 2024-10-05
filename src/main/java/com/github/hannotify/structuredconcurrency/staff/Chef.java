@@ -1,6 +1,5 @@
 package com.github.hannotify.structuredconcurrency.staff;
 
-import com.github.hannotify.structuredconcurrency.restaurant.announcement.AnnouncementId;
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.Course;
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.CourseType;
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.Ingredient;
@@ -54,7 +53,7 @@ public class Chef {
         Course pickedCourse = courses.get(new Random().nextInt(courses.size()));
 
         System.out.format("\t[Chef] %s asked me to pick a %s, so that announcement #%d can take place. So I picked '%s'!%n",
-                waiterName, courseType.name().toLowerCase(), AnnouncementId.threadLocal().get(), pickedCourse);
+                waiterName, courseType.name().toLowerCase(), 1, pickedCourse);
 
         pickedCourse.checkStock();
         return pickedCourse;

@@ -6,7 +6,6 @@ import com.github.hannotify.structuredconcurrency.bar.DrinkOrder;
 import com.github.hannotify.structuredconcurrency.bar.DrinksMenu;
 import com.github.hannotify.structuredconcurrency.bar.Guest;
 import com.github.hannotify.structuredconcurrency.bar.GuestDoesntLikeAnyOfTheseDrinksException;
-import com.github.hannotify.structuredconcurrency.restaurant.announcement.AnnouncementId;
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.Course;
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.CourseType;
 import com.github.hannotify.structuredconcurrency.restaurant.kitchen.OutOfStockException;
@@ -75,7 +74,7 @@ public final class Waiter {
             throw new RuntimeException(e);
         }
 
-        System.out.format("[%s] Announcement #%d: Today's %s will be '%s'.%n", name, AnnouncementId.threadLocal().get(),
+        System.out.format("[%s] Announcement #%d: Today's %s will be '%s'.%n", name, 1,
                 courseType.name().toLowerCase(), pickedCourse);
         return pickedCourse;
     }
