@@ -10,8 +10,8 @@ import java.util.Map;
 import java.util.Random;
 
 import static com.github.hannotify.structuredconcurrency.restaurant.kitchen.CourseType.DESSERT;
-import static com.github.hannotify.structuredconcurrency.restaurant.kitchen.CourseType.STARTER;
 import static com.github.hannotify.structuredconcurrency.restaurant.kitchen.CourseType.MAIN;
+import static com.github.hannotify.structuredconcurrency.restaurant.kitchen.CourseType.STARTER;
 import static com.github.hannotify.structuredconcurrency.restaurant.kitchen.FoodGroup.*;
 
 public class Chef {
