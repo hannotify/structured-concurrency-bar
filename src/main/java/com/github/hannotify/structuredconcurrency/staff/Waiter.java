@@ -23,7 +23,9 @@ public final class Waiter {
     public Course announceCourse(CourseType courseType) throws Exception {
         if (!introduced) introduce();
 
-        return announce(courseType);
+        var course = ScopedValue.where(AnnouncementId.scopedValue(), AnnouncementId.nextId())
+                .call(() -> announce(courseType));
+        return course;
     }
 
     public DrinkOrder getDrinkOrder(final Guest guest, DrinkCategory... drinkCategories) throws GuestDoesntLikeAnyOfTheseDrinksException, InterruptedException {
