@@ -14,13 +14,13 @@ public class StructuredConcurrencyRestaurant implements Restaurant {
         Waiter rosita = new Waiter("Rosita");
 
         try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
-            var starter = scope.fork(() -> grover.announceCourse(CourseType.STARTER));
+            var starter = scope.fork(() -> { throw new RuntimeException("sorry, no starters today"); });
             var main = scope.fork(() -> zoe.announceCourse(CourseType.MAIN));
             var dessert = scope.fork(() -> rosita.announceCourse(CourseType.DESSERT));
 
             scope.join().throwIfFailed();
 
-            return new MultiCourseMeal(starter.get(), main.get(), dessert.get());
+            return new MultiCourseMeal(null, main.get(), dessert.get());
         }
     }
 }
