@@ -35,7 +35,7 @@ public final class Waiter {
             var drinksForThisCategory = drinksMenu.stream().filter(drink -> drink.drinkCategory() == drinkCategory).toList();
 
             if (!drinksForThisCategory.isEmpty()) {
-                System.out.format("[%s] In the '%s' category, we have the following drinks on offer teday:%n", name, drinkCategory);
+                System.out.format("[%s] In the '%s' category, we have the following drinks on offer today:%n", name, drinkCategory);
             }
 
             for (Drink drink : drinksForThisCategory) {
