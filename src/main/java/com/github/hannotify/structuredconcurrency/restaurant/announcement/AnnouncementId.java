@@ -4,10 +4,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class AnnouncementId {
     private static final AtomicInteger nextId = new AtomicInteger(1);
-    private static final ThreadLocal<Integer> announcementId = ThreadLocal.withInitial(nextId::getAndIncrement);
+    private static final ScopedValue<Integer> scopedValue = ScopedValue.newInstance();
 
-    public static int get() {
-        return announcementId.get();
+    public static int nextId() {
+        return nextId.getAndIncrement();
+    }
+
+    public static ScopedValue<Integer> scopedValue() {
+        return scopedValue;
     }
 }
 
