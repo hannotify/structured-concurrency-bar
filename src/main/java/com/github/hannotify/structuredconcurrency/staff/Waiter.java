@@ -61,6 +61,12 @@ public final class Waiter {
     public Course announceCourse(CourseType courseType) throws OutOfStockException {
         if (!introduced) introduce();
 
+        return ScopedValue.where(AnnouncementId.scopedValue(), AnnouncementId.nextId())
+                .call(() -> announce(courseType));
+    }
+
+    public Course announce(CourseType courseType) throws OutOfStockException {
+
         Course pickedCourse;
 
         try {
@@ -71,7 +77,7 @@ public final class Waiter {
             throw new RuntimeException(e);
         }
 
-        System.out.format("[%s] Announcement #%d: Today's %s will be '%s'.%n", name, AnnouncementId.get(),
+        System.out.format("[%s] Announcement #%d: Today's %s will be '%s'.%n", name, AnnouncementId.scopedValue().get(),
                 courseType.name().toLowerCase(), pickedCourse);
         return pickedCourse;
     }
