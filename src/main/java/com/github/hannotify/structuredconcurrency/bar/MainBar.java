@@ -2,13 +2,13 @@ import com.github.hannotify.structuredconcurrency.bar.Bar;
 import com.github.hannotify.structuredconcurrency.bar.Drink;
 import com.github.hannotify.structuredconcurrency.bar.DrinkCategory;
 import com.github.hannotify.structuredconcurrency.bar.Guest;
-import com.github.hannotify.structuredconcurrency.bar.StructuredConcurrencyBar;
+import com.github.hannotify.structuredconcurrency.bar.MultiWaiterBar;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 void main() throws InterruptedException, ExecutionException {
-    Bar bar = new StructuredConcurrencyBar();
+    Bar bar = new MultiWaiterBar();
 
     Guest hanno = new Guest("Hanno", List.of(
             new Drink("Espresso", DrinkCategory.COFFEE),
